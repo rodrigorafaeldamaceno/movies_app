@@ -9,18 +9,15 @@ class MovieRepository {
 
   MovieRepository() {
     _httpClient.options.baseUrl = 'https://api.themoviedb.org/3/';
+    _httpClient.options.queryParameters = {
+      'api_key': apiKey,
+      'language': 'pt-BR',
+    };
   }
 
   Future<List<Movie>?> getMovies() async {
     try {
-      final response = await _httpClient.get(
-        'movie/popular',
-        queryParameters: {
-          'api_key': apiKey,
-          'language': 'pt-BR',
-          'page': 1,
-        },
-      );
+      final response = await _httpClient.get('movie/popular');
 
       final movies = <Movie>[];
 
@@ -37,14 +34,7 @@ class MovieRepository {
 
   Future<List<Movie>?> getSimilarMovies({required int movieId}) async {
     try {
-      final response = await _httpClient.get(
-        'movie/$movieId/similar',
-        queryParameters: {
-          'api_key': apiKey,
-          'language': 'pt-BR',
-          'page': 1,
-        },
-      );
+      final response = await _httpClient.get('movie/$movieId/similar');
 
       final movies = <Movie>[];
 
@@ -61,13 +51,7 @@ class MovieRepository {
 
   Future<MovieDetails?> getMovieDetails(int id) async {
     try {
-      final response = await _httpClient.get(
-        'movie/$id',
-        queryParameters: {
-          'api_key': apiKey,
-          'language': 'pt-BR',
-        },
-      );
+      final response = await _httpClient.get('movie/$id');
 
       return MovieDetails.fromJson(response.data);
     } catch (e, s) {
