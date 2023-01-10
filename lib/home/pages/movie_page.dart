@@ -50,11 +50,13 @@ class MoviePage extends StatelessWidget {
                         ),
                         Row(
                           children: <Widget>[
-                            Text(
-                              details?.title ?? '',
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
+                            Expanded(
+                              child: Text(
+                                details?.title ?? '',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
                               ),
                             ),
                             const SizedBox(
