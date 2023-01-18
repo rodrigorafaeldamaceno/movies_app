@@ -15,48 +15,9 @@ class MovieRepository {
     };
   }
 
-  Future<List<Movie>?> getMovies() async {
-    try {
-      final response = await _httpClient.get('movie/popular');
+  Future<List<Movie>?> getMovies() async {}
 
-      final movies = <Movie>[];
+  Future<List<Movie>?> getSimilarMovies({required int movieId}) async {}
 
-      for (final json in (response.data['results'] as List)) {
-        movies.add(Movie.fromJson(json));
-      }
-
-      return movies;
-    } catch (e, s) {
-      print(e);
-      print(s);
-    }
-  }
-
-  Future<List<Movie>?> getSimilarMovies({required int movieId}) async {
-    try {
-      final response = await _httpClient.get('movie/$movieId/similar');
-
-      final movies = <Movie>[];
-
-      for (final json in (response.data['results'] as List)) {
-        movies.add(Movie.fromJson(json));
-      }
-
-      return movies;
-    } catch (e, s) {
-      print(e);
-      print(s);
-    }
-  }
-
-  Future<MovieDetails?> getMovieDetails(int id) async {
-    try {
-      final response = await _httpClient.get('movie/$id');
-
-      return MovieDetails.fromJson(response.data);
-    } catch (e, s) {
-      print(e);
-      print(s);
-    }
-  }
+  Future<MovieDetails?> getMovieDetails(int id) async {}
 }
