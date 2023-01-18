@@ -72,7 +72,7 @@ class MoviePage extends StatelessWidget {
                         Builder(builder: (context) {
                           String text = '${details?.runtime} | ';
 
-                          text = text +
+                          text = text +=
                               (details?.genres?.map((e) => e.name).join(', ') ??
                                   '');
                           return Text(text);
@@ -105,7 +105,8 @@ class MoviePage extends StatelessWidget {
                                       width: 10,
                                     );
                                   },
-                                  itemBuilder: (BuildContext context, int index) {
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
                                     return AspectRatio(
                                       aspectRatio: 2 / 3,
                                       child: MovieCard(
@@ -131,7 +132,7 @@ class MoviePage extends StatelessWidget {
                         ),
                         Text(
                           details?.overview ?? '',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 20,
                           ),
                         )
