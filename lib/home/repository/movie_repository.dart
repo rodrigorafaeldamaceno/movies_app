@@ -30,6 +30,7 @@ class MovieRepository {
       print(e);
       print(s);
     }
+    return null;
   }
 
   Future<List<Movie>?> getSimilarMovies({required int movieId}) async {
@@ -47,6 +48,7 @@ class MovieRepository {
       print(e);
       print(s);
     }
+    return null;
   }
 
   Future<MovieDetails?> getMovieDetails(int id) async {
@@ -58,5 +60,6 @@ class MovieRepository {
       print(e);
       print(s);
     }
+    return null;
   }
 }

@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:movies_app/home/controller/home_controller.dart';
-import 'package:movies_app/home/models/movie.dart';
 import 'package:movies_app/home/pages/movie_page.dart';
 import 'package:movies_app/home/repository/movie_repository.dart';
 import 'package:movies_app/home/widgets/movie_card.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();

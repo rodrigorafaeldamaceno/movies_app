@@ -1,10 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:movies_app/home/controller/home_controller.dart';
 import 'package:movies_app/home/models/movie.dart';
-import 'package:movies_app/home/models/movie_details.dart';
 import 'package:movies_app/home/repository/movie_repository.dart';
 import 'package:movies_app/home/widgets/movie_card.dart';
 
@@ -80,7 +77,7 @@ class MoviePage extends StatelessWidget {
                         const SizedBox(
                           height: 20,
                         ),
-                        Container(
+                        SizedBox(
                           height: 200,
                           child: FutureBuilder(
                             future: controller.getSimilarMovies(
