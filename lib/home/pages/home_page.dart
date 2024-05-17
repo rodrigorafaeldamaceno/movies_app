@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../controller/home_controller.dart';
-import 'movie_page.dart';
 import '../repository/movie_repository.dart';
 import '../widgets/movie_card.dart';
+import 'movie_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -29,6 +29,21 @@ class _HomePageState extends State<HomePage> {
       body: StreamBuilder(
         stream: controller.getMoviesFromLocal(),
         builder: ((context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.waiting:
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            case ConnectionState.done:
+              if (snapshot.hasError) {
+                return Center(
+                  child: Text(snapshot.error.toString()),
+                );
+              }
+              break;
+            default:
+              break;
+          }
           return GridView.builder(
             itemCount: snapshot.data?.length ?? 0,
             gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
