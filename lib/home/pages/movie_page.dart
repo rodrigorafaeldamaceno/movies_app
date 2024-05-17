@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_app/home/controller/home_controller.dart';
-import 'package:movies_app/home/models/movie.dart';
-import 'package:movies_app/home/repository/movie_repository.dart';
-import 'package:movies_app/home/widgets/movie_card.dart';
+import '../../core/database/database.dart';
+import '../controller/home_controller.dart';
+import '../repository/movie_repository.dart';
+import '../widgets/movie_card.dart';
 
 class MoviePage extends StatelessWidget {
   MoviePage({super.key, required this.movie});
@@ -28,7 +28,7 @@ class MoviePage extends StatelessWidget {
               );
             }
             final details = snapshot.data;
-            return Container(
+            return SizedBox(
               // width: double.infinity,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

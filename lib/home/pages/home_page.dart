@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/home/controller/home_controller.dart';
-import 'package:movies_app/home/pages/movie_page.dart';
-import 'package:movies_app/home/repository/movie_repository.dart';
-import 'package:movies_app/home/widgets/movie_card.dart';
+import '../controller/home_controller.dart';
+import 'movie_page.dart';
+import '../repository/movie_repository.dart';
+import '../widgets/movie_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

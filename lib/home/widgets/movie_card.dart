@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_app/home/controller/home_controller.dart';
-import 'package:movies_app/home/models/movie.dart';
-import 'package:movies_app/home/repository/movie_repository.dart';
+import '../../core/database/database.dart';
+import '../controller/home_controller.dart';
+import '../repository/movie_repository.dart';
 
 class MovieCard extends StatelessWidget {
   MovieCard({super.key, required this.movie, this.onTap});

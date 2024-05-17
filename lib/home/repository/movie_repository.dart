@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:movies_app/home/models/movie.dart';
-import 'package:movies_app/home/models/movie_details.dart';
+import '../../core/database/database.dart';
+import '../models/movie_details.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 const apiKey = '189a45dd7ce86676042909d64d011285';
 
@@ -13,6 +14,7 @@ class MovieRepository {
       'api_key': apiKey,
       'language': 'pt-BR',
     };
+    _httpClient.interceptors.add(PrettyDioLogger());
   }
 
   Future<List<Movie>?> getMovies() async {

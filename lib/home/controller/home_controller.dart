@@ -1,6 +1,6 @@
-import 'package:movies_app/home/models/movie.dart';
-import 'package:movies_app/home/models/movie_details.dart';
-import 'package:movies_app/home/repository/movie_repository.dart';
+import '../../core/database/database.dart';
+import '../models/movie_details.dart';
+import '../repository/movie_repository.dart';
 
 class MovieController {
   final MovieRepository _movieRepository;
