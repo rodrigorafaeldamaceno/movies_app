@@ -15,13 +15,19 @@ class _HomePageState extends State<HomePage> {
   final controller = MovieController(MovieRepository());
 
   @override
+  void initState() {
+    super.initState();
+    controller.getMoviesFromRemote();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Movies App'),
       ),
-      body: FutureBuilder(
-        future: controller.getMovies(),
+      body: StreamBuilder(
+        stream: controller.getMoviesFromLocal(),
         builder: ((context, snapshot) {
           return GridView.builder(
             itemCount: snapshot.data?.length ?? 0,

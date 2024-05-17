@@ -5,7 +5,23 @@ import '../repository/movie_repository.dart';
 class MovieController {
   final MovieRepository _movieRepository;
 
+  final AppDatabase _appDatabase = AppDatabase.instance;
+
   MovieController(this._movieRepository);
+
+  Future<void> getMoviesFromRemote() async {
+    final movies = await _movieRepository.getMovies();
+
+    if (movies == null) return;
+
+    await _appDatabase.moviesDao.removeAll();
+
+    await _appDatabase.moviesDao.addAll(movies);
+  }
+
+  Stream<List<Movie>> getMoviesFromLocal() {
+    return _appDatabase.moviesDao.getAll();
+  }
 
   Future<List<Movie>?> getMovies() async {
     return _movieRepository.getMovies();
