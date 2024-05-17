@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../core/database/database.dart';
+import '../../core/utils/get_image_url.dart';
 import '../controller/home_controller.dart';
 import '../repository/movie_repository.dart';
 import '../widgets/movie_card.dart';
@@ -34,8 +35,7 @@ class MoviePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   CachedNetworkImage(
-                    imageUrl: controller.getImageUrl(
-                        imagePath: details?.backdropPath ?? ''),
+                    imageUrl: getImageUrl(details?.backdropPath ?? ''),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),

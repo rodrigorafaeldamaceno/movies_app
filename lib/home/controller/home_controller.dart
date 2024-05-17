@@ -18,8 +18,4 @@ class MovieController {
   Future<MovieDetails?> getMovieDetails(int id) async {
     return _movieRepository.getMovieDetails(id);
   }
-
-  String getImageUrl({required String imagePath}) {
-    return 'https://image.tmdb.org/t/p/original$imagePath';
-  }
 }

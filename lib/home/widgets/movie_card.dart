@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../core/database/database.dart';
+import '../../core/utils/get_image_url.dart';
 import '../controller/home_controller.dart';
 import '../repository/movie_repository.dart';
 
@@ -22,7 +23,9 @@ class MovieCard extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: CachedNetworkImageProvider(
-                    controller.getImageUrl(imagePath: movie.posterPath ?? ''),
+                    getImageUrl(
+                      movie.posterPath ?? '',
+                    ),
                   ),
                   fit: BoxFit.cover,
                 ),
