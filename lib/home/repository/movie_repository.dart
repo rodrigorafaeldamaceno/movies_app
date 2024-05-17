@@ -3,15 +3,13 @@ import '../../core/database/database.dart';
 import '../models/movie_details.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-const apiKey = '189a45dd7ce86676042909d64d011285';
-
 class MovieRepository {
   final Dio _httpClient = Dio();
 
   MovieRepository() {
     _httpClient.options.baseUrl = 'https://api.themoviedb.org/3/';
     _httpClient.options.queryParameters = {
-      'api_key': apiKey,
+      'api_key': const String.fromEnvironment('MOVIE_API_KEY'),
       'language': 'pt-BR',
     };
     _httpClient.interceptors.add(PrettyDioLogger());
