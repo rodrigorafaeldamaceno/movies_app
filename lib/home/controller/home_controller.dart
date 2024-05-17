@@ -1,4 +1,7 @@
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+
 import '../../core/database/database.dart';
+import '../../core/utils/get_image_url.dart';
 import '../models/movie_details.dart';
 import '../repository/movie_repository.dart';
 
@@ -7,7 +10,17 @@ class MovieController {
 
   final AppDatabase _appDatabase = AppDatabase.instance;
 
+  final cacheManager = DefaultCacheManager();
+
   MovieController(this._movieRepository);
+
+  Future downloadImage(String url) async {
+    final localFile = await cacheManager.getFileFromCache(url);
+
+    if (localFile != null) return;
+
+    await cacheManager.downloadFile(url);
+  }
 
   Future<void> getMoviesFromRemote() async {
     final movies = await _movieRepository.getMovies();
@@ -15,6 +28,10 @@ class MovieController {
     if (movies == null) return;
 
     await _appDatabase.moviesDao.removeAll();
+
+    for (var movie in movies) {
+      downloadImage(getImageUrl(movie.posterPath ?? ''));
+    }
 
     await _appDatabase.moviesDao.addAll(movies);
   }
